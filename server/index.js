@@ -9,6 +9,7 @@ const app = new Koa()
 const port = process.env.PORT || 3000
 
 app.use(serve(path.resolve(__dirname, '..', 'client')))
+app.use(parse())
 
 const userRoutes = require('./routes/users')
 app.use(userRoutes.routes())
@@ -16,7 +17,6 @@ app.use(userRoutes.routes())
 const taskRoutes = require('./routes/tasks')
 app.use(taskRoutes.routes())
 
-app.use(parse())
 
 app.listen(port)
 
